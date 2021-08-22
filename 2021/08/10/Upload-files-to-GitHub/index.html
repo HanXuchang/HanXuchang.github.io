@@ -131,37 +131,48 @@
       
         <h1 id="上传文件夹至github"><a href="#上传文件夹至github" class="headerlink" title="上传文件夹至github"></a>上传文件夹至github</h1><span id="more"></span>
 
-<p>以下为本地操作。</p>
-<h4 id="1）新建空文件夹"><a href="#1）新建空文件夹" class="headerlink" title="1）新建空文件夹"></a>1）新建空文件夹</h4><p>本地电脑新建空文件夹。（新建空文件夹不是文件夹上传github唯一的或必须的或最优的办法，但是我个人觉得会省去很多各种出错的麻烦事儿，新手适用。个人观点，仅供参考。）</p>
-<h4 id="2）克隆新仓库"><a href="#2）克隆新仓库" class="headerlink" title="2）克隆新仓库"></a>2）克隆新仓库</h4><p>进入文件夹，右键会出现2个选项： Git Gui Here,Git Bash Here。 选择Git Bash Here，然后把github上面新建的仓库克隆到本地。（这里会用到第2步复制的那个仓库地址。）<br>克隆仓库，代码如下：git clone + 你的仓库地址<br>（这里我的仓库地址是<a target="_blank" rel="noopener" href="https://github.com/jojowei/mySpiders.git%EF%BC%89">https://github.com/jojowei/mySpiders.git）</a><br>![tu](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pvam93ZWk=,size_16,color_FFFFFF,t_70.png)  </p>
-<h4 id="3）上传前准备"><a href="#3）上传前准备" class="headerlink" title="3）上传前准备"></a>3）上传前准备</h4><p>上个步骤完成之后，本地新建的文件夹下面就会多出个文件夹。该文件夹名即为你github上面新建的那个Repository 的名字。我们把要上传的文件夹里面的内容全部复制到这个本地的Repository同名的文件夹下，然后cd进入克隆的这个文件夹： cd + 文件夹名字<br>![tu2](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pvam93ZWk=,size_16,color_FFFFFF,t_70.png)<br>我这里克隆的文件夹名为mySpiders.<br>![tu3](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2pvam93ZWk=,size_16,color_FFFFFF,t_70.png)<br>我要上传的文件家是scrapy_douban, 我把要上传的文件夹放入mySpiders,然后在git界面进入mySpider: cd mySpiders<br>![tu4](D:\Program Files\Typora\Image\20190404021249142.png)  </p>
-<h4 id="4-依次输入以下代码："><a href="#4-依次输入以下代码：" class="headerlink" title="4) 依次输入以下代码："></a>4) 依次输入以下代码：</h4><p>git init<br>git add *<br>git commit -m “你的提交信息”<br>git push  </p>
-<h4 id="5-大文件上传"><a href="#5-大文件上传" class="headerlink" title="5) 大文件上传"></a>5) 大文件上传</h4><ol>
-<li>git lfs install</li>
-<li>git lfs track “*.rar”</li>
-<li>git config –global –unset http.proxy</li>
-<li>通过GitHub Desktop 上传</li>
-</ol>
 <hr>
-<h4 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h4><ol>
-<li>创建新文件夹</li>
-<li>创建SSH Key</li>
-</ol>
+<h4 id="1-有一个GitHub账号并登录"><a href="#1-有一个GitHub账号并登录" class="headerlink" title="1.有一个GitHub账号并登录"></a>1.有一个GitHub账号并登录</h4><p>废话不多说，自己慢慢去搞</p>
 <hr>
-<blockquote>
-<ol>
-<li><kbd>windows</kbd> + <kbd>R</kbd>键同时按，打开运行命令窗口，输入<kbd>.</kbd>进入home目录。</li>
-<li>看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果有（那就奇了怪了！），一般第一次使用是没有的，真有的话可以直接跳过下面的命令。<br>打开命令行，执行命令：ssh-keygen -t rsa -C “<a href="mailto:&#x68;&#97;&#x6e;&#120;&#x75;&#x63;&#104;&#97;&#110;&#103;&#95;&#x6d;&#97;&#x69;&#108;&#x40;&#49;&#x36;&#x33;&#x2e;&#x63;&#x6f;&#x6d;">&#x68;&#97;&#x6e;&#120;&#x75;&#x63;&#104;&#97;&#110;&#103;&#95;&#x6d;&#97;&#x69;&#108;&#x40;&#49;&#x36;&#x33;&#x2e;&#x63;&#x6f;&#x6d;</a>“邮箱是自己GitHub账号;它会让你选择路径，还会让你设置密码，这里最好全部都按照默认，一路回车下去，如下：<br>![命令1](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4NzI3ODQ3,size_16,color_FFFFFF,t_70.png)<br>这时候我们再次打开家目录，会发现有一个<code>.ssh</code>文件夹，如下：<br>![命令2](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4NzI3ODQ3,size_16,color_FFFFFF,t_70-16296414726386)<br>如果上面的命令没有问题的话，也看不到这个文件夹肯定就是隐藏文件显示按钮没有打开，点击查看<code>(View)</code>把隐藏的项目<code>（Hidden items）</code>选项勾上。<br>打开<code>.ssh</code>这个文件夹，可以看到两个文件：<br>![命令3](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4NzI3ODQ3,size_16,color_FFFFFF,t_70-16296414726387)<br><code>id_rsa</code>是私钥，不能泄露， <code>id_rsa.pub</code>是公钥，可以放心传播。</li>
-<li>登录GitHub，打开<code>settings</code>找到<code>SSH Key</code>页面，点击<kbd>New SSH Key</kbd>， 填上标题，同时在Key文本框中粘贴<code>id_rsa.pub</code>文件的公钥内容。<br>![](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4NzI3ODQ3,size_16,color_FFFFFF,t_70-16296414726388)<br>![](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4NzI3ODQ3,size_16,color_FFFFFF,t_70-16296414726389)<br>![](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4NzI3ODQ3,size_16,color_FFFFFF,t_70.png)<br>点击<kbd>Add SSH key</kbd>之后会跳转到输入密码的界面，我们需要输入GitHub密码来继续：<br>![](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4NzI3ODQ3,size_16,color_FFFFFF,t_70-162964147263911)<br>接下来我们就可以看到我们新加的SSH key了，如下：<br>![](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4NzI3ODQ3,size_16,color_FFFFFF,t_70.png)  </li>
-</ol>
-</blockquote>
+<h4 id="2-创建仓库"><a href="#2-创建仓库" class="headerlink" title="2.创建仓库"></a>2.创建仓库</h4><p><font color = red>如果已经有仓库，跳过这一过程。</font></p>
+<p>在自己Github账户上新建一个存储库：选择<code>Repositories</code>然后点击<kbd>new</kbd>，<code>Repository name</code>填你的仓库名字，点击<kbd>Create repository</kbd>完成创建仓库。如下图所示：</p>
+<p>![在这里插入图片描述](D:\Program Files\Typora\Image\5906e544e48049838c02b69aa3d4d864.png#pic_center)<br>点击New后填写仓库名并创建。</p>
+<p>![在这里插入图片描述](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center-16296418344782)<br>这样就完成创建了一个新的  Repository。如下图所示：<br>![在这里插入图片描述](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center-16296418344783) </p>
 <hr>
-<ol start="3">
-<li>远程添加文件  <blockquote>
-<p>在本地仓库中运行下面的命令：<br><code>git remote add origin <a target="_blank" rel="noopener" href="https://github.com/duanmingpy/helloworld.git">https://github.com/duanmingpy/helloworld.git</a></code><br><code>git push -u origin master</code><br>![](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4NzI3ODQ3,size_16,color_FFFFFF,t_70-162964147263913)<br>把提示的东西都输入完成之后就可以推送成功了，如下：<br>![](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4NzI3ODQ3,size_16,color_FFFFFF,t_70.png)<br>这里使用的几个命令,其中<code>git push</code>命令，实际上是把当前分支master推送到远程。<br>因为远程库是空的，第一次推送master增加一个<code>-u</code>参数，这样Git不仅仅会把本地的master分支的内容推送到远程GitHub仓库中新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送和拉取就可以简化命令了。</p>
-</blockquote>
+<h4 id="3-下载安装Git"><a href="#3-下载安装Git" class="headerlink" title="3.下载安装Git"></a>3.下载安装Git</h4><p><font color = red>如果已经安装上了Git，继续跳过这一过程。</font>  </p>
+<p>下载Git<br>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/19FKe6OJfHtckwMhsmK3Dug">点击下载</a><br>提取码：hank<br>安装：一直点击下一步就完事了。<br>然后随便在一个文件夹右键出现这两个东西就算成功。</p>
+<p>![ ](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center.png) </p>
+<hr>
+<h4 id="4-创建SSH-Key"><a href="#4-创建SSH-Key" class="headerlink" title="4.创建SSH Key"></a>4.创建SSH Key</h4><ol>
+<li><p><kbd>windows</kbd> + <kbd>R</kbd>键同时按，打开运行命令窗口，输入<kbd>.</kbd>进入home目录。</p>
+</li>
+<li><p>看看这个目录下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>这两个文件，如果有（那就奇了怪了！），一般第一次使用是没有的，真有的话可以<font color = red>直接跳过下面的命令。</font></p>
+</li>
+<li><p>在一个空文件夹右键选择<kbd>Git Bush Here</kbd>（也就是打开命令行），执行命令：<code>ssh-keygen -t rsa -C "<u><a href="mailto:&#104;&#97;&#110;&#120;&#117;&#x63;&#x68;&#x61;&#x6e;&#x67;&#x5f;&#109;&#x61;&#105;&#x6c;&#x40;&#49;&#54;&#x33;&#x2e;&#99;&#x6f;&#109;">&#104;&#97;&#110;&#120;&#117;&#x63;&#x68;&#x61;&#x6e;&#x67;&#x5f;&#109;&#x61;&#105;&#x6c;&#x40;&#49;&#54;&#x33;&#x2e;&#99;&#x6f;&#109;</a></u>"</code>邮箱是自己GitHub账号;它会让你选择路径，还会让你设置密码，这里最好全部都按照默认，一路回车下去，如下：<br>![在这里插入图片描述](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center.png)</p>
+</li>
+<li><p>这时候我们再次打开家目录，会发现有一个<code>.ssh</code>文件夹，如下：<br>![在这里插入图片描述](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center.png)<br>如果上面的命令没有问题的话，也看不到这个文件夹肯定就是隐藏文件显示按钮没有打开，点击查看<code>(View)</code>把隐藏的项目<code>（Hidden items）</code>选项勾上。<br>打开<code>.ssh</code>这个文件夹，可以看到三个文件（或者两个）：<br>![在这里插入图片描述](D:\Program Files\Typora\Image\afa81c423ea2496d8a043acab980c2a1.png#pic_center)<br><code>id_rsa</code>是私钥，不能泄露， <code>id_rsa.pub</code>是公钥，可以放心传播。  </p>
+</li>
+<li><p>登录GitHub，打开<code>settings</code>找到<code>SSH Key</code>页面，点击<kbd>New SSH Key</kbd>， 填上标题，同时在Key文本框中粘贴<code>id_rsa.pub</code>文件的公钥内容。<br>![在这里插入图片描述](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center-16296418344788)<br>![在这里插入图片描述](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center-16296418344789) </p>
 </li>
 </ol>
+<p>Title随便填，Key填<code>id_rsa.pub</code>中的所有内容。</p>
+<p>![在这里插入图片描述](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center.png)<br>6. 正式添加文件环节：远程添加文件<br>复制这里的链接：<br>![在这里插入图片描述](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center-162964183447911)<br>在本地仓库中运行下面的命令：<br><code>git init</code>  //初始化一下文件夹<br>![在这里插入图片描述](D:\Program Files\Typora\Image\78b6e0fe402e4a0fa901b13ce0199967.png#pic_center)<br><code>git remote add origin <u><a target="_blank" rel="noopener" href="https://github.com/duanmingpy/helloworld.git">https://github.com/duanmingpy/helloworld.git</a></u></code><br>//链接存储库<br>链接填自己复制的。</p>
+<p>然后把自己要传的文件放到本地存储库中（也就是打开Git Bush Here的文件夹里）<br> <code>git add *</code> // 添加文件<br><code>git commit -m "add file"</code> //引号里面填修改信息（可以随便填）<br>![在这里插入图片描述](D:\Program Files\Typora\Image\6979efda31fe463e96b45b10c904335d.png#pic_center)</p>
+<p><code>git push</code> //完成上传！！<br>如果之前存储库没有文件则最后一步把<br><code>git push</code>换成<br><code>git push --set-upstream origin master</code><br>![在这里插入图片描述](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center.png)<br>![在这里插入图片描述](D:\Program Files\Typora\Image\33a7b8bee2bc41f68e10c179558796b1.png#pic_center)</p>
+<p>完成上传！</p>
+<hr>
+<p><strong>其中：</strong></p>
+<p>查看当前分支<br><code>git branch -a</code></p>
+<p>如果当前不在自己想要的分支上，则：<br><code>git checkout 想要操作的分支</code></p>
+<p>将本地文件复制到该分支下，然后：<br><code>git add *<br>git commit -m “你的注释”<br>git push -u origin 想要操作的分支</code></p>
+<hr>
+<h1 id="———-克隆存储库———"><a href="#———-克隆存储库———" class="headerlink" title="———-克隆存储库———-"></a><center>———-克隆存储库———-</center></h1><p>上面是传文件，接下来尝试怎么克隆存储库：</p>
+<ol>
+<li>创建一个空文件夹<code>clone</code></li>
+<li>找到要克隆的链接并复制如图：<br>![在这里插入图片描述](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center.png) </li>
+</ol>
+<p>3.文件夹内右键点击Git Bush Here打开命令行，输入<br><code>git clone <a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#111;&#x6d;">&#x67;&#x69;&#116;&#64;&#103;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#111;&#x6d;</a>:HanXuchang/Test1.git</code><br>![在这里插入图片描述](D:\Program Files\Typora\Image\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjM3MTM2,size_16,color_FFFFFF,t_70#pic_center.png)<br>完成克隆：</p>
+<p>![在这里插入图片描述](D:\Program Files\Typora\Image\db1e2951826843c5b599b37d9df74a4b.png#pic_center)</p>
 
         
             <div id="toc-article">
@@ -169,7 +180,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> Contents</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%A4%B9%E8%87%B3github"><span class="toc-text">上传文件夹至github</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E6%96%B0%E5%BB%BA%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">1）新建空文件夹</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E5%85%8B%E9%9A%86%E6%96%B0%E4%BB%93%E5%BA%93"><span class="toc-text">2）克隆新仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89%E4%B8%8A%E4%BC%A0%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text">3）上传前准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%BE%9D%E6%AC%A1%E8%BE%93%E5%85%A5%E4%BB%A5%E4%B8%8B%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-text">4) 依次输入以下代码：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">5) 大文件上传</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="toc-text">远程连接</span></a></li></ol></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%A4%B9%E8%87%B3github"><span class="toc-text">上传文件夹至github</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%9C%89%E4%B8%80%E4%B8%AAGitHub%E8%B4%A6%E5%8F%B7%E5%B9%B6%E7%99%BB%E5%BD%95"><span class="toc-text">1.有一个GitHub账号并登录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="toc-text">2.创建仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Git"><span class="toc-text">3.下载安装Git</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%88%9B%E5%BB%BASSH-Key"><span class="toc-text">4.创建SSH Key</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E2%80%94%E2%80%94-%E5%85%8B%E9%9A%86%E5%AD%98%E5%82%A8%E5%BA%93%E2%80%94%E2%80%94%E2%80%94"><span class="toc-text">———-克隆存储库———-</span></a></li></ol>
     </div>
   </div>
 
