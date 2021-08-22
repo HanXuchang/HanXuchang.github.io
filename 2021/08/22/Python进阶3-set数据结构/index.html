@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Python进阶3 - set数据结构 | 韩旭昌的学习笔记🌴</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <meta name="description" content="blog">
+  
+  
+  
+    <link rel="alternate" href="/atom.xml" title="韩旭昌的学习笔记🌴" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">韩旭昌的学习笔记🌴</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">索问甚荣与枯，🍂无知的衰朽木，反不如花解语🥀</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> Home</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> Archive</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> About</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="search"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Python进阶3-set数据结构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Python进阶3 - set数据结构
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2021-08-22T11:40:00.000Z" itemprop="datePublished">2021年08月22日</time>
+</span>
+      
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/2021/08/22/Python%E8%BF%9B%E9%98%B63-set%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  Guestbook
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="set-集合-数据结构"><a href="#set-集合-数据结构" class="headerlink" title="set(集合)数据结构"></a><code>set</code>(集合)数据结构</h1><p><code>set</code>(集合)是一个非常有用的数据结构。它与列表(<code>list</code>)的行为类似，区别在于<code>set</code>不能包含重复的值。</p>
+<span id="more"></span>
+
+<p>这在很多情况下非常有用。例如你可能想检查列表中是否包含重复的元素，你有两个选择，第一个需要使用<code>for</code>循环，就像这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">some_list = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;n&#x27;</span>]</span><br><span class="line"></span><br><span class="line">duplicates = []</span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> some_list:</span><br><span class="line">    <span class="keyword">if</span> some_list.count(value) &gt; <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> value <span class="keyword">not</span> <span class="keyword">in</span> duplicates:</span><br><span class="line">            duplicates.append(value)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(duplicates)</span><br><span class="line"><span class="comment">### 输出: [&#x27;b&#x27;, &#x27;n&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p>但还有一种更简单更优雅的解决方案，那就是使用<code>集合(sets)</code>，你直接这样做：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">some_list = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;n&#x27;</span>]</span><br><span class="line">duplicates = <span class="built_in">set</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> some_list <span class="keyword">if</span> some_list.count(x) &gt; <span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(duplicates)</span><br><span class="line"><span class="comment">### 输出: set([&#x27;b&#x27;, &#x27;n&#x27;])</span></span><br></pre></td></tr></table></figure>
+
+<p>集合还有一些其它方法，下面我们介绍其中一部分。</p>
+<h2 id="交集"><a href="#交集" class="headerlink" title="交集"></a>交集</h2><p>你可以对比两个集合的交集（两个集合中都有的数据），如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">valid = <span class="built_in">set</span>([<span class="string">&#x27;yellow&#x27;</span>, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>, <span class="string">&#x27;black&#x27;</span>])</span><br><span class="line">input_set = <span class="built_in">set</span>([<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;brown&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(input_set.intersection(valid))</span><br><span class="line"><span class="comment">### 输出: set([&#x27;red&#x27;])</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="差集"><a href="#差集" class="headerlink" title="差集"></a>差集</h2><p>你可以用差集(difference)找出无效的数据，相当于用一个集合减去另一个集合的数据，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">valid = <span class="built_in">set</span>([<span class="string">&#x27;yellow&#x27;</span>, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>, <span class="string">&#x27;black&#x27;</span>])</span><br><span class="line">input_set = <span class="built_in">set</span>([<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;brown&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(input_set.difference(valid))</span><br><span class="line"><span class="comment">### 输出: set([&#x27;brown&#x27;])</span></span><br></pre></td></tr></table></figure>
+
+<p>你也可以用符号来创建集合，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a_set = &#123;<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a_set))</span><br><span class="line"><span class="comment">### 输出: &lt;type &#x27;set&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>集合还有一些其它方法，我会建议访问官方文档并做个快速阅读。</p>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://docs.pythontab.com/interpy/set_data_structure/set_data_structure/">https://docs.pythontab.com/interpy/set_data_structure/set_data_structure/</a></p>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> Contents</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#set-%E9%9B%86%E5%90%88-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">set(集合)数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E9%9B%86"><span class="toc-text">交集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%AE%E9%9B%86"><span class="toc-text">差集</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>Original link: <a href="https://hanxuchang.github.io/2021/08/22/Python进阶3-set数据结构/">https://hanxuchang.github.io/2021/08/22/Python进阶3-set数据结构/</a></p>
+              <p>Copyright Notice: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+    <div class="article-reward">
+        <a id="reward-btn" href="javascript:;">打赏</a>
+        <div id="reward-content">
+            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
+            <div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/wechat.jpg">
+                    <img class="er-code" src="/css/images/wechat-pay.jpg">
+                </div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/alipay.jpg">
+                    <img class="er-code" src="/css/images/alipay-pay.jpg">
+                </div>
+            </div>
+            <p class="reward-desc">扫码打赏，感谢支持</p>
+        </div>
+    </div>
+
+
+          
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+          
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/2021/08/22/Python%E8%BF%9B%E9%98%B64-%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          Python进阶4 - 三元运算符
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/08/21/Python%E8%BF%9B%E9%98%B62-Map%EF%BC%8CFilter-%E5%92%8C-Reduce/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">Python进阶2 - Map，Filter 和 Reduce</div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-posts"></i> Recent</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/08/22/Python%E8%BF%9B%E9%98%B64-%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6/">Python进阶4 - 三元运算符</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/22/Python%E8%BF%9B%E9%98%B63-set%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">Python进阶3 - set数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/21/Python%E8%BF%9B%E9%98%B62-Map%EF%BC%8CFilter-%E5%92%8C-Reduce/">Python进阶2 - Map，Filter 和 Reduce</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/21/Python%E8%BF%9B%E9%98%B61-args%E5%92%8C-kwargs/">Python进阶1- *args 和 **kwargs</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/21/Python-NLP%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/">Python-NLP入门教程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> Archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年08月</a><span class="archive-list-count">12</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-tag"></i> Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/e-book/" rel="tag">e-book</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-link"></i> Blogroll</h3>
+    <div class="widget">
+      <ul>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://github.com/">GitHub</a>
+        </li>
+      
+        <li>
+          <a target="_blank" rel="noopener" href="https://www.runoob.com/">RUNOOB</a>
+        </li>
+      
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+		  </span><a href="/about/">Contact the blogger</a>
+      </p>
+      
+      <p>
+        <span>Copyright &copy; 2021 HanXuchang.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>
