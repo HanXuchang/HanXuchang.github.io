@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>Python进阶4 - 三元运算符 | 韩旭昌的学习笔记🌴</title>
+  <title>海事小记-210922 | 韩旭昌的学习笔记🌴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="blog">
@@ -81,7 +81,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-Python进阶4-三元运算符" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-海事小记-210922" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -89,7 +89,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Python进阶4 - 三元运算符
+      海事小记-210922
     </h1>
   
 
@@ -100,7 +100,7 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-08-22T11:47:10.000Z" itemprop="datePublished">2021年08月22日</time>
+  <time class="dt-published" datetime="2021-09-22T05:11:47.000Z" itemprop="datePublished">2021年09月22日</time>
 </span>
       
       
@@ -113,7 +113,7 @@
 
       
       
-<a href="/2021/08/22/Python%E8%BF%9B%E9%98%B64-%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6/#comments" class="article-comment-link">
+<a href="/2021/09/22/%E6%B5%B7%E4%BA%8B%E5%B0%8F%E8%AE%B0-210922/#comments" class="article-comment-link">
   
     
     
@@ -129,32 +129,28 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h1><p>三元运算符通常在Python里被称为条件表达式，这些表达式基于真(true)/假(not)的条件判断，在Python 2.4以上才有了三元操作。</p>
+        <p>曾经的上海，在我记忆当中，是一个繁华的城市。自从亲历魔都的风采，我才发现，它是是一个繁华的城市。</p>
+<p align="right"> ————废话文学🙉🙉🙉🙉</p>
+
+<img src="https://godve.gitee.io/images/BlogImages/210922/7.jpg" alt="" width="500" align="bottom" />
+
 <span id="more"></span>
 
-<p>下面是一个伪代码和例子：</p>
-<p><strong>伪代码:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果条件为真，返回真 否则返回假</span></span><br><span class="line">condition_is_true <span class="keyword">if</span> condition <span class="keyword">else</span> condition_is_false</span><br></pre></td></tr></table></figure>
+<p>既然来到上海上学，当然要去市里看看，虽然距离学校非常远，但是交通还算便利。来到上海我体会到了上海的老地铁，这呼啸的感觉真的让人爽啊，地铁的年龄比我还大。🚃🚃🚃🚃🚃🚃</p>
+<p>刚出地铁站，第一眼见到魔都的感觉，非常震撼，属实震惊到我了。第一次在高楼大厦下感觉自己非常的渺小。在唐山，感觉银泰就已经很高了，没想到，在这只能算是皮毛。</p>
+<p>在南京东路下车，迫不及待地想立马看到外滩，我边走边想，这TM的太屌了！走了几分钟，终于见到了真的东方明珠，好大！照片真的没有现场震撼。</p>
+<img src="https://godve.gitee.io/images/BlogImages/210922/15.jpg" alt="" width="500" align="bottom" />
 
-<p><strong>例子:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">is_fat = <span class="literal">True</span></span><br><span class="line">state = <span class="string">&quot;fat&quot;</span> <span class="keyword">if</span> is_fat <span class="keyword">else</span> <span class="string">&quot;not fat&quot;</span></span><br></pre></td></tr></table></figure>
+<p>看一眼就行了，毕竟我的好兄弟杨毅还在等我去他的出租屋吃午饭，他亲自下厨。坐上地铁赶快去找他，等晚上再来看夜上海啥样。</p>
+<p>他那里距离外滩很近，很快就到了，一个大男人做的这么好吃，真牛👍👍👍👍，向他学习！红烧肉+鱼炖豆腐！完美</p>
+<img src="https://godve.gitee.io/images/BlogImages/210922/16.jpg" alt="" width="300" align="bottom" />
 
-<p>它允许用简单的一行快速判断，而不是使用复杂的多行<code>if</code>语句。 这在大多数时候非常有用，而且可以使代码简单可维护。</p>
-<p>另一个晦涩一点的用法比较少见，它使用了元组，请继续看：</p>
-<p><strong>伪代码:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#(返回假，返回真)[真或假]</span></span><br><span class="line">(if_test_is_false, if_test_is_true)[test]</span><br></pre></td></tr></table></figure>
+<p>下午去了城隍庙，步行街等等，在月老殿前拜一拜，烧个香啥的，希望能有桃花运😍😍😍</p>
+<img src="https://godve.gitee.io/images/BlogImages/210922/5.jpg" alt="" width="500" align="bottom" />
 
-<p><strong>例子:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fat = <span class="literal">True</span></span><br><span class="line">fitness = (<span class="string">&quot;skinny&quot;</span>, <span class="string">&quot;fat&quot;</span>)[fat]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Ali is &quot;</span>, fitness)</span><br><span class="line"><span class="comment">#输出: Ali is fat</span></span><br></pre></td></tr></table></figure>
+<img src="https://godve.gitee.io/images/BlogImages/210922/11.jpg" alt="" width="500" align="bottom" />
 
-<p>这之所以能正常工作，是因为在Python中，True等于1，而False等于0，这就相当于在元组中使用0和1来选取数据。</p>
-<p>上面的例子没有被广泛使用，而且Python玩家一般不喜欢那样，因为没有Python味儿(Pythonic)。这样的用法很容易把真正的数据与true/false弄混。</p>
-<p>另外一个不使用元组条件表达式的缘故是因为在元组中会把两个条件都执行，而 <code>if-else</code> 的条件表达式不会这样。</p>
-<p>例如:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">condition = <span class="literal">True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">2</span> <span class="keyword">if</span> condition <span class="keyword">else</span> <span class="number">1</span>/<span class="number">0</span>)</span><br><span class="line"><span class="comment">#输出: 2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>((<span class="number">1</span>/<span class="number">0</span>, <span class="number">2</span>)[condition])</span><br><span class="line"><span class="comment">#输出ZeroDivisionError异常</span></span><br></pre></td></tr></table></figure>
-
-<p>这是因为在元组中是先建数据，然后用True(1)/False(0)来索引到数据。 而<code>if-else</code>条件表达式遵循普通的<code>if-else</code>逻辑树， 因此，如果逻辑中的条件异常，或者是重计算型（计算较久）的情况下，最好尽量避免使用元组条件表达式。</p>
-<p>原文链接：<a target="_blank" rel="noopener" href="https://docs.pythontab.com/interpy/ternary_operators/ternary_operators/">https://docs.pythontab.com/interpy/ternary_operators/ternary_operators/</a></p>
+<img src="https://godve.gitee.io/images/BlogImages/210922/9.jpg" alt="" width="300" align="bottom" />
 
         
             <div id="toc-article">
@@ -162,7 +158,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> Contents</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">三元运算符</span></a></li></ol>
+      
     </div>
   </div>
 
@@ -171,7 +167,7 @@
         
         
           <blockquote id="copyright">
-              <p>Original link: <a href="https://hanxuchang.github.io/2021/08/22/Python进阶4-三元运算符/">https://hanxuchang.github.io/2021/08/22/Python进阶4-三元运算符/</a></p>
+              <p>Original link: <a href="https://hanxuchang.github.io/2021/09/22/海事小记-210922/">https://hanxuchang.github.io/2021/09/22/海事小记-210922/</a></p>
               <p>Copyright Notice: 转载请注明出处.</p>
           </blockquote>
         
@@ -201,7 +197,7 @@
 
 
           
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/" rel="tag">blog</a></li></ul>
 
           
 
@@ -212,19 +208,10 @@
         
 <nav id="article-nav">
   
-    <a href="/2021/08/24/Python%E8%BF%9B%E9%98%B65-%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%881%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Python进阶5 - 装饰器（1）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/08/22/Python%E8%BF%9B%E9%98%B63-set%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/08/29/Python%E8%BF%9B%E9%98%B65-%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%882%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">Python进阶3 - set数据结构</div>
+      <div class="article-nav-title">Python进阶5 - 装饰器（2）</div>
     </a>
   
 </nav>
