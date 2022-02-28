@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>Python进阶3 - set数据结构 | 韩旭昌的学习笔记🌴</title>
+  <title>机器学习-1 | 韩旭昌的学习笔记🌴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="blog">
@@ -81,7 +81,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-Python进阶3-set数据结构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-机器学习-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -89,7 +89,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Python进阶3 - set数据结构
+      机器学习-1
     </h1>
   
 
@@ -100,7 +100,7 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-08-22T11:40:00.000Z" itemprop="datePublished">2021年08月22日</time>
+  <time class="dt-published" datetime="2022-02-26T08:21:55.000Z" itemprop="datePublished">2022年02月26日</time>
 </span>
       
       
@@ -113,7 +113,7 @@
 
       
       
-<a href="/2021/08/22/Python%E8%BF%9B%E9%98%B63-set%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#comments" class="article-comment-link">
+<a href="/2022/02/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-1/#comments" class="article-comment-link">
   
     
     
@@ -129,27 +129,18 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="set-集合-数据结构"><a href="#set-集合-数据结构" class="headerlink" title="set(集合)数据结构"></a><code>set</code>(集合)数据结构</h1><p><code>set</code>(集合)是一个非常有用的数据结构。它与列表(<code>list</code>)的行为类似，区别在于<code>set</code>不能包含重复的值。</p>
-<span id="more"></span>
+        <span id="more"></span>
 
-<p>这在很多情况下非常有用。例如你可能想检查列表中是否包含重复的元素，你有两个选择，第一个需要使用<code>for</code>循环，就像这样：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">some_list = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;n&#x27;</span>]</span><br><span class="line"></span><br><span class="line">duplicates = []</span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> some_list:</span><br><span class="line">    <span class="keyword">if</span> some_list.count(value) &gt; <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> value <span class="keyword">not</span> <span class="keyword">in</span> duplicates:</span><br><span class="line">            duplicates.append(value)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(duplicates)</span><br><span class="line"><span class="comment">### 输出: [&#x27;b&#x27;, &#x27;n&#x27;]</span></span><br></pre></td></tr></table></figure>
-
-<p>但还有一种更简单更优雅的解决方案，那就是使用<code>集合(sets)</code>，你直接这样做：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">some_list = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;n&#x27;</span>]</span><br><span class="line">duplicates = <span class="built_in">set</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> some_list <span class="keyword">if</span> some_list.count(x) &gt; <span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(duplicates)</span><br><span class="line"><span class="comment">### 输出: set([&#x27;b&#x27;, &#x27;n&#x27;])</span></span><br></pre></td></tr></table></figure>
-
-<p>集合还有一些其它方法，下面我们介绍其中一部分。</p>
-<h2 id="交集"><a href="#交集" class="headerlink" title="交集"></a>交集</h2><p>你可以对比两个集合的交集（两个集合中都有的数据），如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">valid = <span class="built_in">set</span>([<span class="string">&#x27;yellow&#x27;</span>, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>, <span class="string">&#x27;black&#x27;</span>])</span><br><span class="line">input_set = <span class="built_in">set</span>([<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;brown&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(input_set.intersection(valid))</span><br><span class="line"><span class="comment">### 输出: set([&#x27;red&#x27;])</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="差集"><a href="#差集" class="headerlink" title="差集"></a>差集</h2><p>你可以用差集(difference)找出无效的数据，相当于用一个集合减去另一个集合的数据，例如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">valid = <span class="built_in">set</span>([<span class="string">&#x27;yellow&#x27;</span>, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>, <span class="string">&#x27;black&#x27;</span>])</span><br><span class="line">input_set = <span class="built_in">set</span>([<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;brown&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(input_set.difference(valid))</span><br><span class="line"><span class="comment">### 输出: set([&#x27;brown&#x27;])</span></span><br></pre></td></tr></table></figure>
-
-<p>你也可以用符号来创建集合，如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a_set = &#123;<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;green&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a_set))</span><br><span class="line"><span class="comment">### 输出: &lt;type &#x27;set&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>集合还有一些其它方法，我会建议访问官方文档并做个快速阅读。</p>
-<p>原文链接：<a target="_blank" rel="noopener" href="https://docs.pythontab.com/interpy/set_data_structure/set_data_structure/">https://docs.pythontab.com/interpy/set_data_structure/set_data_structure/</a></p>
+<p><code>1.线性回归 (Linear Regression)</code></p>
+<p><code>2.逻辑回归 (Logistic Regression)</code></p>
+<p><code>3.决策树 (Decision Tree)</code></p>
+<p><code>4.支持向量机（SVM）</code></p>
+<p><code>5.朴素贝叶斯 (Naive Bayes)</code></p>
+<p><code>6.K邻近算法（KNN）</code></p>
+<p><code>7.K-均值算法（K-means）</code></p>
+<p><code>8.随机森林 (Random Forest)</code></p>
+<p><code>9.降低维度算法（Dimensionality Reduction Algorithms）</code></p>
+<p><code>10.Gradient Boost和Adaboost算法</code></p>
 
         
             <div id="toc-article">
@@ -157,7 +148,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> Contents</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#set-%E9%9B%86%E5%90%88-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">set(集合)数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E9%9B%86"><span class="toc-text">交集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%AE%E9%9B%86"><span class="toc-text">差集</span></a></li></ol></li></ol>
+      
     </div>
   </div>
 
@@ -166,7 +157,7 @@
         
         
           <blockquote id="copyright">
-              <p>Original link: <a href="https://godve.gitee.io/2021/08/22/Python进阶3-set数据结构/">https://godve.gitee.io/2021/08/22/Python进阶3-set数据结构/</a></p>
+              <p>Original link: <a href="https://godve.gitee.io/2022/02/26/机器学习-1/">https://godve.gitee.io/2022/02/26/机器学习-1/</a></p>
               <p>Copyright Notice: 转载请注明出处.</p>
           </blockquote>
         
@@ -196,7 +187,7 @@
 
 
           
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
 
           
 
@@ -207,19 +198,10 @@
         
 <nav id="article-nav">
   
-    <a href="/2021/08/22/Python%E8%BF%9B%E9%98%B64-%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Python进阶4 - 三元运算符
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/08/21/Python%E8%BF%9B%E9%98%B62-Map%EF%BC%8CFilter-%E5%92%8C-Reduce/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2022/02/26/Java-%E9%93%BE%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">Python进阶2 - Map，Filter 和 Reduce</div>
+      <div class="article-nav-title">Java-链表</div>
     </a>
   
 </nav>
