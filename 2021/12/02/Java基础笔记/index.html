@@ -129,7 +129,8 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Java 基础知识</p>
+        <p><strong>Java 基础知识</strong></p>
+<p>[TOC]</p>
 <span id="more"></span>
 
 <h1 id="Java基础笔记"><a href="#Java基础笔记" class="headerlink" title="Java基础笔记"></a>Java基础笔记</h1><h2 id="Java-集合框架"><a href="#Java-集合框架" class="headerlink" title="Java 集合框架"></a>Java 集合框架</h2><p>早在 Java 2 中之前，Java 就提供了特设类。比如：Dictionary, Vector, Stack, 和 Properties 这些类用来存储和操作对象组。</p>
@@ -361,6 +362,103 @@
 <p><img src="https://gitee.com/godve/images/raw/master/20200302160909113.png" alt="在这里插入图片描述"></p>
 <h3 id="Iterator（迭代器）"><a href="#Iterator（迭代器）" class="headerlink" title="Iterator（迭代器）"></a>Iterator（迭代器）</h3><p>Java Iterator（迭代器）不是一个集合，它是一种用于访问集合的方法，可用于迭代 <a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-arraylist.html">ArrayList</a> 和 <a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-hashset.html">HashSet</a> 等集合。</p>
 <p>Iterator 是 Java 迭代器最简单的实现，ListIterator 是 Collection API 中的接口， 它扩展了 Iterator 接口。</p>
+<hr>
+<h2 id="String、StringBuffer和StringBuilder的区别"><a href="#String、StringBuffer和StringBuilder的区别" class="headerlink" title="String、StringBuffer和StringBuilder的区别"></a>String、StringBuffer和StringBuilder的区别</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>  String类是不可变类，即一旦一个String对象被创建以后，包含在这个对象中的字符序列是不可改变的，直至这个对象被销毁。</p>
+<p>  这个是String类的解释，之前小咸儿看到这个情况，不能理解上述的解释，如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">a = <span class="string">&quot;456&quot;</span>;</span><br><span class="line"><span class="comment">// 打印出来的a为456</span></span><br><span class="line">System.out.println(a)</span><br></pre></td></tr></table></figure>
+
+<p>  看到这里，小伙伴不明白了，这不是明明已经对他进行修改了吗？为什么还说他是一个不可变类呢？</p>
+<p>  经过小咸儿和小伙伴们的学习，明白String类不可变在哪里体现出来的，接下来就看一张上述a对象的内存存储空间图</p>
+<p><img src="https://gitee.com/godve/images/raw/master/20190616102116187.png" alt="img"></p>
+<p>可以看出来，再次给a赋值时，并不是对原来堆中实例对象进行重新赋值，而是生成一个新的实例对象，并且指向“456”这个字符串，a则指向最新生成的实例对象，之前的实例对象仍然存在，如果没有被再次引用，则会被垃圾回收。</p>
+<h3 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h3><p> StringBuffer对象则代表一个字符序列可变的字符串，当一个StringBuffer被创建以后，通过StringBuffer提供的<code>append()</code>、<code>insert()</code>、<code>reverse()</code>、<code>setCharAt()</code>、<code>setLength()</code>等方法可以改变这个字符串对象的字符序列。一旦通过StringBuffer生成了最终想要的字符串，就可以调用它的<code>toString()</code>方法将其转换为一个String对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer b = <span class="keyword">new</span> StringBuffer(<span class="string">&quot;123&quot;</span>);</span><br><span class="line">b.append(<span class="string">&quot;456&quot;</span>);</span><br><span class="line"><span class="comment">// b打印结果为：123456</span></span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></table></figure>
+
+<p>再看一下<strong>b对象的内存空间图：</strong></p>
+<p><img src="https://gitee.com/godve/images/raw/master/20190616102134212.png" alt="img"></p>
+<p>所以说StringBuffer对象是一个字符序列可变的字符串，它没有重新生成一个对象，而且在原来的对象中可以连接新的字符串。</p>
+<h3 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h3><p>StringBuilder类也代表可变字符串对象。实际上，StringBuilder和StringBuffer基本相似，两个类的构造器和方法也基本相同。不同的是：<strong>StringBuffer是线程安全的，而StringBuilder则没有实现线程安全功能，所以性能略高。</strong></p>
+<p>StringBuffer是如何实现<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8&spm=1001.2101.3001.7020">线程安全</a>的呢？<br>StringBuffer类中实现的方法：</p>
+<p><img src="https://gitee.com/godve/images/raw/master/20190616102221263.png" alt="img"></p>
+<p>StringBuilder类中实现的方法：</p>
+<p><img src="https://gitee.com/godve/images/raw/master/2019061610223156.png" alt="在这里插入图片描述"></p>
+<p>由此可见，StringBuffer类中的方法都添加了<strong>synchronized关键字</strong>，也就是给这个方法添加了一个锁，用来保证线程安全。</p>
+<hr>
+<h2 id="Java-split-方法"><a href="#Java-split-方法" class="headerlink" title="Java split() 方法"></a>Java split() 方法</h2><p>split() 方法根据匹配给定的正则表达式来拆分字符串。</p>
+<p><strong>注意：</strong> <code>.</code> 、 <code>$</code>、 <code>|</code> 和 <code>*</code> 等转义字符，必须得加 <code>\</code>。</p>
+<p><strong>注意：</strong>多个分隔符，可以用 <code>|</code> 作为连字符。</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String[] split(String regex, <span class="keyword">int</span> limit)</span><br></pre></td></tr></table></figure>
+
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><ul>
+<li><strong>regex</strong> – 正则表达式分隔符。</li>
+<li><strong>limit</strong> – 分割的份数。</li>
+</ul>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><p>字符串数组。</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\t</td>
+<td>间隔 (‘\u0009’)</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行 (‘\u000A’)</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车 (‘\u000D’)</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>数字 等价于 [0-9]</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>非数字 等价于 [ ^0-9 ]</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>空白符号 [\t\n\x0B\f\r]</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>非空白符号 [ ^\t\n\x0B\f\r ]</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>单独字符 [a-zA-Z_0-9]</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>非单独字符 [ ^a-zA-Z_0-9 ]</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页符</td>
+</tr>
+<tr>
+<td>\e</td>
+<td>Escape</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>一个单词的边界</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>一个非单词的边界</td>
+</tr>
+<tr>
+<td>\G</td>
+<td>前一个匹配的结束</td>
+</tr>
+</tbody></table>
+<p>正则表达式学习：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yw0219/p/8047938.html">博客</a>，<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jsref/jsref_split.asp">W3school</a>，<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-string-split.html">菜鸟</a>。</p>
 
         
             <div id="toc-article">
@@ -368,7 +466,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> Contents</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0"><span class="toc-text">Java基础笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6"><span class="toc-text">Java 集合框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E6%8E%A5%E5%8F%A3"><span class="toc-text">集合接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E5%AE%9E%E7%8E%B0%E7%B1%BB%EF%BC%88%E9%9B%86%E5%90%88%E7%B1%BB%EF%BC%89"><span class="toc-text">集合实现类（集合类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">如何使用迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86-ArrayList"><span class="toc-text">遍历 ArrayList</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86-Map"><span class="toc-text">遍历 Map</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList"><span class="toc-text">ArrayList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet"><span class="toc-text">HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet%E4%B8%8EHashMap%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">HashSet与HashMap的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterator%EF%BC%88%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%89"><span class="toc-text">Iterator（迭代器）</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0"><span class="toc-text">Java基础笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6"><span class="toc-text">Java 集合框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E6%8E%A5%E5%8F%A3"><span class="toc-text">集合接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E5%AE%9E%E7%8E%B0%E7%B1%BB%EF%BC%88%E9%9B%86%E5%90%88%E7%B1%BB%EF%BC%89"><span class="toc-text">集合实现类（集合类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">如何使用迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86-ArrayList"><span class="toc-text">遍历 ArrayList</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86-Map"><span class="toc-text">遍历 Map</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList"><span class="toc-text">ArrayList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet"><span class="toc-text">HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet%E4%B8%8EHashMap%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">HashSet与HashMap的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Iterator%EF%BC%88%E8%BF%AD%E4%BB%A3%E5%99%A8%EF%BC%89"><span class="toc-text">Iterator（迭代器）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String%E3%80%81StringBuffer%E5%92%8CStringBuilder%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">String、StringBuffer和StringBuilder的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#String"><span class="toc-text">String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StringBuffer"><span class="toc-text">StringBuffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StringBuilder"><span class="toc-text">StringBuilder</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-split-%E6%96%B9%E6%B3%95"><span class="toc-text">Java split() 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-text">参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-text">返回值</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
   </div>
 
@@ -407,7 +505,7 @@
 
 
           
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
           
 
@@ -460,6 +558,10 @@
       <ul>
         
           <li>
+            <a href="/2022/03/03/JavaWeb/">JavaWeb</a>
+          </li>
+        
+          <li>
             <a href="/2022/02/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-1/">机器学习-1</a>
           </li>
         
@@ -475,10 +577,6 @@
             <a href="/2021/12/16/NB%E7%9A%84%E4%BB%A3%E7%A0%81/">NB的代码</a>
           </li>
         
-          <li>
-            <a href="/2021/12/04/Java%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%82%E5%B8%B8/">Java常见的异常</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -492,7 +590,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> Archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年02月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年12月</a><span class="archive-list-count">25</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022年03月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年12月</a><span class="archive-list-count">25</span></li></ul>
     </div>
   </div>
 
@@ -502,7 +600,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-tag"></i> Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Notes/" rel="tag">Notes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/e-book/" rel="tag">e-book</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81/" rel="tag">代码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag">图床</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Notes/" rel="tag">Notes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/e-book/" rel="tag">e-book</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nlp/" rel="tag">nlp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81/" rel="tag">代码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag">图床</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
