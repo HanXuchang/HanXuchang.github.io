@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>Han&#39;s Learning Blog</title>
+  <title>java-IO | Han&#39;s Learning Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="blog">
@@ -81,16 +81,15 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  <article id="post-java-IO" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-java-IO" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/05/java-IO/">java-IO</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      java-IO
     </h1>
   
 
@@ -105,8 +104,22 @@
 </span>
       
       
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
       
 <a href="/2022/03/05/java-IO/#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
   
   <i class="fa fa-commt"></i>
   Guestbook
@@ -191,9 +204,21 @@
 </ul>
 
         
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> Contents</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-IO%E6%B5%81"><span class="toc-text">Java IO流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">1.基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-IO%E6%B5%81%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">2.IO流的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AD%97%E8%8A%82%E6%B5%81"><span class="toc-text">3.字节流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89-%E5%AD%97%E8%8A%82%E6%B5%81%E5%9F%BA%E7%B1%BB"><span class="toc-text">（1）.字节流基类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%EF%BC%89-InputStream"><span class="toc-text">1）.InputStream</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%EF%BC%89-OutputStream"><span class="toc-text">2）.OutputStream</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89-%E5%AD%97%E8%8A%82%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E6%B5%81"><span class="toc-text">（2）.字节文件操作流</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%EF%BC%89-FileInputStream"><span class="toc-text">1）.FileInputStream</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%EF%BC%89-FileOutputStream"><span class="toc-text">2）.FileOutputStream</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89-%E5%AD%97%E8%8A%82%E7%BC%93%E5%86%B2%E6%B5%81%EF%BC%88%E9%AB%98%E6%95%88%E6%B5%81%EF%BC%89"><span class="toc-text">（3）.字节缓冲流（高效流）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%EF%BC%89-BufferedInputStream"><span class="toc-text">1）.BufferedInputStream</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%EF%BC%89-BufferedOutputStream"><span class="toc-text">2）.BufferedOutputStream</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AD%97%E7%AC%A6%E6%B5%81"><span class="toc-text">4.字符流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89-%E5%AD%97%E7%AC%A6%E6%B5%81%E5%9F%BA%E7%B1%BB"><span class="toc-text">（1）.字符流基类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%EF%BC%89-Reader"><span class="toc-text">1）.Reader</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%EF%BC%89-Writer"><span class="toc-text">2）.Writer</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89-%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2%E6%B5%81"><span class="toc-text">（2）.字符转换流</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%EF%BC%89-InputStreamReader"><span class="toc-text">1）.InputStreamReader</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%EF%BC%89-OutputStreamWriter"><span class="toc-text">2）.OutputStreamWriter</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89-%E5%AD%97%E7%AC%A6%E7%BC%93%E5%86%B2%E6%B5%81%EF%BC%88%E9%AB%98%E6%95%88%E6%B5%81%EF%BC%89"><span class="toc-text">（3）.字符缓冲流（高效流）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%EF%BC%89-BufferedReader"><span class="toc-text">1）.BufferedReader</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%EF%BC%89-BufferedWriter"><span class="toc-text">2）.BufferedWriter</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%884%EF%BC%89-FileReader%E3%80%81FileWriter"><span class="toc-text">（4）.FileReader、FileWriter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%AB%98%E6%95%88%E6%B5%81%E6%95%88%E7%8E%87%E6%AF%94%E5%AF%B9"><span class="toc-text">5.高效流效率比对</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%B9%E5%BC%8F%E4%B8%80%EF%BC%9A"><span class="toc-text">读取方式一：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%B9%E5%BC%8F%E4%BA%8C%EF%BC%9A"><span class="toc-text">读取方式二：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%B9%E5%BC%8F%E4%B8%89%EF%BC%9A"><span class="toc-text">读取方式三：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E8%8A%82%E7%82%B9%E6%B5%81"><span class="toc-text">常用的节点流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%A4%84%E7%90%86%E6%B5%81"><span class="toc-text">常用的处理流</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
         
           <blockquote id="copyright">
-              <p>Original link: <a href="https://godve.gitee.io/index.html">https://godve.gitee.io/index.html</a></p>
+              <p>Original link: <a href="https://godve.gitee.io/2022/03/05/java-IO/">https://godve.gitee.io/2022/03/05/java-IO/</a></p>
               <p>Copyright Notice: 转载请注明出处.</p>
           </blockquote>
         
@@ -231,328 +256,31 @@
         </div>
       
       
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-leetcode刷题基础知识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/05/leetcode%E5%88%B7%E9%A2%98%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">leetcode刷题基础知识</a>
-    </h1>
   
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-03-05T04:01:24.000Z" itemprop="datePublished">2022年03月05日</time>
-</span>
-      
-      
-      
-<a href="/2022/03/05/leetcode%E5%88%B7%E9%A2%98%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#comments" class="article-comment-link">
+    <a href="/2022/03/05/leetcode%E5%88%B7%E9%A2%98%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">leetcode刷题基础知识</div>
+    </a>
   
-  <i class="fa fa-commt"></i>
-  Guestbook
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>leetcode刷题基础知识</p>
-      
-    </div>
-    <footer class="article-footer">
-      
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
-
-        <p class="article-more-link">
-          <a href="/2022/03/05/leetcode%E5%88%B7%E9%A2%98%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#more">Read More</a>
-        </p>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-JavaWeb" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/03/JavaWeb/">JavaWeb</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-03-03T09:37:51.000Z" itemprop="datePublished">2022年03月03日</time>
-</span>
-      
-      
-      
-<a href="/2022/03/03/JavaWeb/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  Guestbook
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>学习JavaWeb的完整笔记：</p>
-<p>[TOC]</p>
-      
-    </div>
-    <footer class="article-footer">
-      
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
-
-        <p class="article-more-link">
-          <a href="/2022/03/03/JavaWeb/#more">Read More</a>
-        </p>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-机器学习-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-1/">机器学习-1</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-02-26T08:21:55.000Z" itemprop="datePublished">2022年02月26日</time>
-</span>
-      
-      
-      
-<a href="/2022/02/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-1/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  Guestbook
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <span id="more"></span>
-
-<p><code>1.线性回归 (Linear Regression)</code></p>
-<p><code>2.逻辑回归 (Logistic Regression)</code></p>
-<p><code>3.决策树 (Decision Tree)</code></p>
-<p><code>4.支持向量机（SVM）</code></p>
-<p><code>5.朴素贝叶斯 (Naive Bayes)</code></p>
-<p><code>6.K邻近算法（KNN）</code></p>
-<p><code>7.K-均值算法（K-means）</code></p>
-<p><code>8.随机森林 (Random Forest)</code></p>
-<p><code>9.降低维度算法（Dimensionality Reduction Algorithms）</code></p>
-<p><code>10.Gradient Boost和Adaboost算法</code></p>
-
-        
-        
-          <blockquote id="copyright">
-              <p>Original link: <a href="https://godve.gitee.io/index.html">https://godve.gitee.io/index.html</a></p>
-              <p>Copyright Notice: 转载请注明出处.</p>
-          </blockquote>
-        
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div class="article-tag-wrap">
-          
-    <div class="article-reward">
-        <a id="reward-btn" href="javascript:;">打赏</a>
-        <div id="reward-content">
-            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
-            <div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/wechat.jpg">
-                    <img class="er-code" src="/css/images/wechat-pay.jpg">
-                </div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/alipay.jpg">
-                    <img class="er-code" src="/css/images/alipay-pay.jpg">
-                </div>
-            </div>
-            <p class="reward-desc">扫码打赏，感谢支持</p>
-        </div>
-    </div>
-
-
-          
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
-
-          
-
-
-        </div>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-Java-链表" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/26/Java-%E9%93%BE%E8%A1%A8/">Java-链表</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-02-26T06:32:02.000Z" itemprop="datePublished">2022年02月26日</time>
-</span>
-      
-      
-      
-<a href="/2022/02/26/Java-%E9%93%BE%E8%A1%A8/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  Guestbook
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><img src="https://gitee.com/godve/images/raw/master/20200806194529815.png" alt="链表1"></p>
-      
-    </div>
-    <footer class="article-footer">
-      
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
-
-        <p class="article-more-link">
-          <a href="/2022/02/26/Java-%E9%93%BE%E8%A1%A8/#more">Read More</a>
-        </p>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-  <article id="post-读书笔记-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/01/12/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-1/">读书笔记</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-meta">
-      
-      <span class="article-date">
-  <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2022-01-12T05:59:49.000Z" itemprop="datePublished">2022年01月12日</time>
-</span>
-      
-      
-      
-<a href="/2022/01/12/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-1/#comments" class="article-comment-link">
-  
-  <i class="fa fa-commt"></i>
-  Guestbook
-</a>
-
-
-    </div>
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>Book：神经网络与机器学习-邱锡鹏</li>
-</ul>
-      
-    </div>
-    <footer class="article-footer">
-      
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Notes/" rel="tag">Notes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-        <p class="article-more-link">
-          <a href="/2022/01/12/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-1/#more">Read More</a>
-        </p>
-      
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-
-    <nav id="page-nav">
-
-<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next</a>
 </nav>
 
+      
+      
+        
 
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
 </section>
         
           <aside id="sidebar">
