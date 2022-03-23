@@ -351,7 +351,31 @@
 <p><strong>不同的滤波器来提取信号序列中的不同特征：</strong></p>
 <p><img src="https://gitee.com/godve/images/raw/master/image-20220309182552790.png" alt=" "></p>
 <p><img src="https://gitee.com/godve/images/raw/master/image-20220309182618601.png"></p>
-<h2 id="5-2-卷积神经网络"><a href="#5-2-卷积神经网络" class="headerlink" title="5.2 卷积神经网络"></a>5.2 卷积神经网络</h2><h2 id="5-3-参数学习"><a href="#5-3-参数学习" class="headerlink" title="5.3 参数学习"></a>5.3 参数学习</h2><h2 id="5-4-几种典型的卷积神经网络"><a href="#5-4-几种典型的卷积神经网络" class="headerlink" title="5.4 几种典型的卷积神经网络"></a>5.4 几种典型的卷积神经网络</h2><h2 id="5-5-其他卷积方式"><a href="#5-5-其他卷积方式" class="headerlink" title="5.5 其他卷积方式"></a>5.5 其他卷积方式</h2>
+<h2 id="5-2-卷积神经网络"><a href="#5-2-卷积神经网络" class="headerlink" title="5.2 卷积神经网络"></a>5.2 卷积神经网络</h2><p><font color=#FF0000 ><strong>用卷积层代替全连接层：</strong></font></p>
+<p><img src="https://gitee.com/godve/images/raw/master/image-20220323201630227.png"></p>
+<p><strong>互相关：</strong></p>
+<ul>
+<li>计算卷积需要进行卷积核<strong>翻转</strong>。</li>
+<li>卷积操作的目标：<strong>提取特征</strong>。</li>
+</ul>
+<p><em>翻转是不必要的！</em></p>
+<ul>
+<li>互相关</li>
+</ul>
+<p><img src="https://gitee.com/godve/images/raw/master/image-20220323202233720.png"></p>
+<p><font color=#FF0000 >卷积网络是由卷积层、汇聚层、全连接层交叉堆叠而成。</font></p>
+<blockquote>
+<p>趋向于小卷积、大深度</p>
+</blockquote>
+<blockquote>
+<p>趋向于全卷积</p>
+</blockquote>
+<p><font color=#FF0000 ><strong>典型结构：</strong></font></p>
+<p><img src="https://gitee.com/godve/images/raw/master/image-20220323200658303.png"></p>
+<blockquote>
+<p>一个卷积块为连续M 个卷积层和b个汇聚层（M通常设置为2 ∼ 5，b为0或1）。一个卷积网络中可以堆叠N 个连续的卷积块，然后在接着K 个全连接层（N 的取值区间比较大，比如1 ∼ 100或者更大；K一般为0 ∼ 2）。</p>
+</blockquote>
+<h2 id="5-3-参数学习"><a href="#5-3-参数学习" class="headerlink" title="5.3 参数学习"></a>5.3 参数学习</h2><h2 id="5-4-几种典型的卷积神经网络"><a href="#5-4-几种典型的卷积神经网络" class="headerlink" title="5.4 几种典型的卷积神经网络"></a>5.4 几种典型的卷积神经网络</h2><h2 id="5-5-其他卷积方式"><a href="#5-5-其他卷积方式" class="headerlink" title="5.5 其他卷积方式"></a>5.5 其他卷积方式</h2>
         
             <div id="toc-article">
                 
