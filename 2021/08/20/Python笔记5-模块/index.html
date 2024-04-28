@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Python笔记5-模块 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1. Python 模块Python 模块(Module)，是一个 Python 文件，以 .py 结尾，包含了 Python 对象定义和Python语句。 模块让你能够有逻辑地组织你的 Python 代码段。 把相关的代码分配到一个模块里能让你的代码更好用，更易懂。 模块能定义函数，类和变量，模块里也能包含可执行的代码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python笔记5-模块">
+<meta property="og:url" content="http://example.com/2021/08/20/Python%E7%AC%94%E8%AE%B05-%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. Python 模块Python 模块(Module)，是一个 Python 文件，以 .py 结尾，包含了 Python 对象定义和Python语句。 模块让你能够有逻辑地组织你的 Python 代码段。 把相关的代码分配到一个模块里能让你的代码更好用，更易懂。 模块能定义函数，类和变量，模块里也能包含可执行的代码。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-20T06:30:15.000Z">
+<meta property="article:modified_time" content="2024-04-28T15:47:29.877Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Python笔记5-模块" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/20/Python%E7%AC%94%E8%AE%B05-%E6%A8%A1%E5%9D%97/" class="article-date">
+  <time class="dt-published" datetime="2021-08-20T06:30:15.000Z" itemprop="datePublished">2021-08-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Python笔记5-模块
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Python-模块"><a href="#1-Python-模块" class="headerlink" title="1. Python 模块"></a>1. Python 模块</h2><p>Python 模块(Module)，是一个 Python 文件，以 .py 结尾，包含了 Python 对象定义和Python语句。</p>
+<p>模块让你能够有逻辑地组织你的 Python 代码段。</p>
+<p>把相关的代码分配到一个模块里能让你的代码更好用，更易懂。</p>
+<p>模块能定义函数，类和变量，模块里也能包含可执行的代码。</p>
+<span id="more"></span>
+
+<p><strong>例子</strong></p>
+<p>下例是个简单的模块 support.py：</p>
+<blockquote>
+<p><em>support.py 模块：</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">print_func</span>(<span class="params"> par </span>):</span><br><span class="line">   <span class="built_in">print</span> <span class="string">&quot;Hello : &quot;</span>, par</span><br><span class="line">   <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="1-1-import-语句"><a href="#1-1-import-语句" class="headerlink" title="1.1 import 语句"></a>1.1 import 语句</h3><h4 id="1-1-1-模块的引入"><a href="#1-1-1-模块的引入" class="headerlink" title="1.1.1 模块的引入"></a>1.1.1 模块的引入</h4><p>模块定义好后，我们可以使用 import 语句来引入模块，语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> module1[, module2[,... moduleN]]</span><br></pre></td></tr></table></figure>
+
+<p>比如要引用模块 math，就可以在文件最开始的地方用 <code>import math</code> 来引入。在调用 math 模块中的函数时，必须这样引用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">模块名.函数名</span><br></pre></td></tr></table></figure>
+
+<p>当解释器遇到 import 语句，如果模块在当前的搜索路径就会被导入。</p>
+<p>搜索路径是一个解释器会先进行搜索的所有目录的列表。如想要导入模块 support.py，需要把命令放在脚本的顶端：</p>
+<blockquote>
+<p><em>test.py 文件代码：</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="comment">#!/usr/bin/python</span></span><br><span class="line">&gt;<span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line">&gt;<span class="comment"># 导入模块</span></span><br><span class="line">&gt;<span class="keyword">import</span> support</span><br><span class="line"></span><br><span class="line">&gt;<span class="comment"># 现在可以调用模块里包含的函数了</span></span><br><span class="line">&gt;support.print_func(<span class="string">&quot;Runoob&quot;</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>以上实例输出结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello : Runoob</span><br></pre></td></tr></table></figure>
+
+<p>一个模块只会被导入一次，不管你执行了多少次import。这样可以防止导入模块被一遍又一遍地执行。</p>
+<h3 id="1-2-from…import-语句"><a href="#1-2-from…import-语句" class="headerlink" title="1.2 from…import 语句"></a>1.2 from…import 语句</h3><p>Python 的 from 语句让你从模块中导入一个指定的部分到当前命名空间中。语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> modname <span class="keyword">import</span> name1[, name2[, ... nameN]]</span><br></pre></td></tr></table></figure>
+
+<p>例如，要导入模块 fib 的 fibonacci 函数，使用如下语句：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fib <span class="keyword">import</span> fibonacci</span><br></pre></td></tr></table></figure>
+
+<p>这个声明不会把整个 fib 模块导入到当前的命名空间中，它只会将 fib 里的 fibonacci 单个引入到执行这个声明的模块的全局符号表。</p>
+<h3 id="1-3-from…import-语句"><a href="#1-3-from…import-语句" class="headerlink" title="1.3 from…import* 语句"></a>1.3 from…import* 语句</h3><p>把一个模块的所有内容全都导入到当前的命名空间也是可行的，只需使用如下声明：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> modname <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
+
+<p>这提供了一个简单的方法来导入一个模块中的所有项目。然而这种声明不该被过多地使用。</p>
+<p>例如我们想一次性引入 math 模块中所有的东西，语句如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-搜索路径"><a href="#1-4-搜索路径" class="headerlink" title="1.4 搜索路径"></a>1.4 搜索路径</h3><p>当你导入一个模块，Python 解析器对模块位置的搜索顺序是：</p>
+<ul>
+<li>1、当前目录</li>
+<li>2、如果不在当前目录，Python 则搜索在 shell 变量 PYTHONPATH 下的每个目录。</li>
+<li>3、如果都找不到，Python会察看默认路径。UNIX下，默认路径一般为&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python&#x2F;。</li>
+</ul>
+<p>模块搜索路径存储在 system 模块的 sys.path 变量中。变量里包含当前目录，PYTHONPATH和由安装过程决定的默认目录。</p>
+<h3 id="1-5-PYTHONPATH-变量"><a href="#1-5-PYTHONPATH-变量" class="headerlink" title="1.5 PYTHONPATH 变量"></a>1.5 PYTHONPATH 变量</h3><p>作为环境变量，PYTHONPATH 由装在一个列表里的许多目录组成。PYTHONPATH 的语法和 shell 变量 PATH 的一样。</p>
+<p>在 Windows 系统，典型的 PYTHONPATH 如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> PYTHONPATH=c:\python27\lib;</span><br></pre></td></tr></table></figure>
+
+<p>在 UNIX 系统，典型的 PYTHONPATH 如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> PYTHONPATH=/usr/local/lib/python</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-命名空间和作用域"><a href="#1-6-命名空间和作用域" class="headerlink" title="1.6 命名空间和作用域"></a>1.6 命名空间和作用域</h3><p>变量是拥有匹配对象的名字（标识符）。命名空间是一个包含了变量名称们（键）和它们各自相应的对象们（值）的字典。</p>
+<p>一个 Python 表达式可以访问局部命名空间和全局命名空间里的变量。如果一个局部变量和一个全局变量重名，则局部变量会覆盖全局变量。</p>
+<p>每个函数都有自己的命名空间。类的方法的作用域规则和通常函数的一样。</p>
+<p>Python 会智能地猜测一个变量是局部的还是全局的，它假设任何在函数内赋值的变量都是局部的。</p>
+<p>因此，如果要给函数内的全局变量赋值，必须使用 global 语句。</p>
+<p>global VarName 的表达式会告诉 Python， VarName 是一个全局变量，这样 Python 就不会在局部命名空间里寻找这个变量了。</p>
+<p>例如，我们在全局命名空间里定义一个变量 Money。我们再在函数内给变量 Money 赋值，然后 Python 会假定 Money 是一个局部变量。然而，我们并没有在访问前声明一个局部变量 Money，结果就是会出现一个 UnboundLocalError 的错误。取消 global 语句前的注释符就能解决这个问题。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line">Money = <span class="number">2000</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">AddMoney</span>():</span><br><span class="line">   <span class="comment"># 想改正代码就取消以下注释:</span></span><br><span class="line">   <span class="comment"># global Money</span></span><br><span class="line">   Money = Money + <span class="number">1</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> Money</span><br><span class="line">AddMoney()</span><br><span class="line"><span class="built_in">print</span> Money</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-7-dir-函数"><a href="#1-7-dir-函数" class="headerlink" title="1.7 dir()函数"></a>1.7 dir()函数</h3><p>dir() 函数一个排好序的字符串列表，内容是一个模块里定义过的名字。</p>
+<p>返回的列表容纳了在一个模块里定义的所有模块，变量和函数。如下一个简单的实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 导入内置math模块</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"> </span><br><span class="line">content = <span class="built_in">dir</span>(math)</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span> content;</span><br></pre></td></tr></table></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;__doc__&#x27;, &#x27;__file__&#x27;, &#x27;__name__&#x27;, &#x27;acos&#x27;, &#x27;asin&#x27;, &#x27;atan&#x27;, </span><br><span class="line">&#x27;atan2&#x27;, &#x27;ceil&#x27;, &#x27;cos&#x27;, &#x27;cosh&#x27;, &#x27;degrees&#x27;, &#x27;e&#x27;, &#x27;exp&#x27;, </span><br><span class="line">&#x27;fabs&#x27;, &#x27;floor&#x27;, &#x27;fmod&#x27;, &#x27;frexp&#x27;, &#x27;hypot&#x27;, &#x27;ldexp&#x27;, &#x27;log&#x27;,</span><br><span class="line">&#x27;log10&#x27;, &#x27;modf&#x27;, &#x27;pi&#x27;, &#x27;pow&#x27;, &#x27;radians&#x27;, &#x27;sin&#x27;, &#x27;sinh&#x27;, </span><br><span class="line">&#x27;sqrt&#x27;, &#x27;tan&#x27;, &#x27;tanh&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>在这里，特殊字符串变量__name__指向模块的名字，__file__指向该模块的导入文件名。</p>
+<h3 id="1-8-globals-和-locals-函数"><a href="#1-8-globals-和-locals-函数" class="headerlink" title="1.8 globals() 和 locals() 函数"></a>1.8 globals() 和 locals() 函数</h3><p>根据调用地方的不同，globals() 和 locals() 函数可被用来返回全局和局部命名空间里的名字。</p>
+<p>如果在函数内部调用 locals()，返回的是所有能在该函数里访问的命名。</p>
+<p>如果在函数内部调用 globals()，返回的是所有在该函数里能访问的全局名字。</p>
+<p>两个函数的返回类型都是字典。所以名字们能用 keys() 函数摘取。</p>
+<h3 id="1-9-reload-函数"><a href="#1-9-reload-函数" class="headerlink" title="1.9 reload() 函数"></a>1.9 reload() 函数</h3><p>当一个模块被导入到一个脚本，模块顶层部分的代码只会被执行一次。</p>
+<p>因此，如果你想重新执行模块里顶层部分的代码，可以用 reload() 函数。该函数会重新导入之前导入过的模块。语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reload(module_name)</span><br></pre></td></tr></table></figure>
+
+<p>在这里，module_name要直接放模块的名字，而不是一个字符串形式。比如想重载 hello 模块，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reload(hello)</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-10-Python中的包"><a href="#1-10-Python中的包" class="headerlink" title="1.10 Python中的包"></a>1.10 Python中的包</h3><p>包是一个分层次的文件目录结构，它定义了一个由模块及子包，和子包下的子包等组成的 Python 的应用环境。</p>
+<p>简单来说，包就是文件夹，但该文件夹下必须存在 <code>__init__.py</code> 文件, 该文件的内容可以为空。<code>__init__.py</code> 用于标识当前文件夹是一个包。</p>
+<p>考虑一个在 <code>package_runoob</code>目录下的 <code>runoob1.py</code>、<code>runoob2.py</code>、<code>__init__.py</code> 文件，<code>test.py</code> 为测试调用包的代码，目录结构如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test.py</span><br><span class="line">package_runoob</span><br><span class="line">|-- __init__.py</span><br><span class="line">|-- runoob1.py</span><br><span class="line">|-- runoob2.py</span><br></pre></td></tr></table></figure>
+
+<p>源代码如下：</p>
+<blockquote>
+<p><em>package_runoob&#x2F;runoob1.py</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">runoob1</span>():</span><br><span class="line">   <span class="built_in">print</span> <span class="string">&quot;I&#x27;m in runoob1&quot;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><em>package_runoob&#x2F;runoob2.py</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">runoob2</span>():</span><br><span class="line">   <span class="built_in">print</span> <span class="string">&quot;I&#x27;m in runoob2&quot;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>现在，在 <code>package_runoob</code> 目录下创建 <code>__init__.py</code>：</p>
+<blockquote>
+<p><em>package_runoob&#x2F;<code>__init__.py</code></em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;作为主程序运行&#x27;</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;package_runoob 初始化&#x27;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>然后我们在<code>package_runoob</code> <code>同级目录</code>下创建 <code>test.py</code> 来调用 <code>package_runoob</code>包</p>
+<blockquote>
+<p><em>test.py</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 导入 Phone 包</span></span><br><span class="line"><span class="keyword">from</span> package_runoob.runoob1 <span class="keyword">import</span> runoob1</span><br><span class="line"><span class="keyword">from</span> package_runoob.runoob2 <span class="keyword">import</span> runoob2</span><br><span class="line"> </span><br><span class="line">runoob1()</span><br><span class="line">runoob2()</span><br></pre></td></tr></table></figure>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>以上实例输出结果：</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>package_runoob 初始化<br/>I’m in runoob1<br/>I’m in runoob2</td>
+</tr>
+</tbody></table>
+<p>如上，为了举例，我们只在每个文件里放置了一个函数，但其实你可以放置许多函数。你也可以在这些文件里定义Python的类，然后为这些类建一个包。</p>
+<h2 id="2-Python常用模块"><a href="#2-Python常用模块" class="headerlink" title="2. Python常用模块"></a>2. Python常用模块</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiao-apple36/p/8806039.html">Python模块——time、datetime、random </a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiao-apple36/p/8809111.html">Python模块——os、sys、shutil</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiao-apple36/p/8831821.html">Python模块——json、pickle</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiao-apple36/p/8849484.html">Python模块——xml</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiao-apple36/p/8854245.html">Python模块——configparser</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiao-apple36/p/8857201.html">Python模块——subprocess</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiao-apple36/p/8882796.html">Python模块——logging</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiao-apple36/p/8935783.html">Python模块——re</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiao-apple36/p/8931901.html">Python模块——collections</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiao-apple36/p/8744213.html">Python模块——HashLib、base64</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiao-apple36/p/9089027.html">Python模块——Click</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiao-apple36/p/9071553.html">Python模块——DBUtil</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiao-apple36/p/9151883.html">Python模块—— Colorama</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiao-apple36/p/9144092.html">Python模块——Paramiko</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiao-apple36/p/9124292.html">Python模块——fabric</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiao-apple36/p/9115629.html">Python模块——PrettyTable</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/20/Python%E7%AC%94%E8%AE%B05-%E6%A8%A1%E5%9D%97/" data-id="clvjphfl20008m0nn9hooffqw" data-title="Python笔记5-模块" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/08/21/Python-NLP%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python-NLP入门教程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/08/20/Python%E7%AC%94%E8%AE%B04-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python笔记4-异常处理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/e-book/" rel="tag">e-book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nlp/" rel="tag">nlp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/e-book/" style="font-size: 10px;">e-book</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/04/28/hello-world/">你好，周纯伊</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/25/Spring%E5%AD%A6%E4%B9%A0-1/">Spring学习-1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/22/%E6%B5%B7%E4%BA%8B%E5%B0%8F%E8%AE%B0-210922/">海事小记-210922</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/29/Python%E8%BF%9B%E9%98%B65-%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%882%EF%BC%89/">Python进阶5 - 装饰器（2）</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/24/Python%E8%BF%9B%E9%98%B65-%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%881%EF%BC%89/">Python进阶5 - 装饰器（1）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

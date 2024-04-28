@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Python进阶1- *args 和 **kwargs | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="*args 和 **kwargs大部分新的Python程序员都需要花上大量时间理解清楚 *args 和**kwargs这两个魔法变量。那么它们到底是什么? 其实并不是必须写成*args 和**kwargs。 只有变量前面的 *(星号)才是必须的. 你也可以写成*var 和**vars. 而写成*args 和**kwargs只是一个通俗的命名约定。 那就先看一下*args吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python进阶1- *args 和 **kwargs">
+<meta property="og:url" content="http://example.com/2021/08/21/Python%E8%BF%9B%E9%98%B61-args%E5%92%8C-kwargs/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="*args 和 **kwargs大部分新的Python程序员都需要花上大量时间理解清楚 *args 和**kwargs这两个魔法变量。那么它们到底是什么? 其实并不是必须写成*args 和**kwargs。 只有变量前面的 *(星号)才是必须的. 你也可以写成*var 和**vars. 而写成*args 和**kwargs只是一个通俗的命名约定。 那就先看一下*args吧。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-21T12:24:38.000Z">
+<meta property="article:modified_time" content="2024-04-28T15:47:30.171Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Python进阶1-args和-kwargs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/21/Python%E8%BF%9B%E9%98%B61-args%E5%92%8C-kwargs/" class="article-date">
+  <time class="dt-published" datetime="2021-08-21T12:24:38.000Z" itemprop="datePublished">2021-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Python进阶1- *args 和 **kwargs
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="args-和-kwargs"><a href="#args-和-kwargs" class="headerlink" title="*args 和 **kwargs"></a><code>*args</code> 和 <code>**kwargs</code></h1><p>大部分新的Python程序员都需要花上大量时间理解清楚 <code>*args</code> 和<code>**kwargs</code>这两个魔法变量。那么它们到底是什么?</p>
+<p>其实并不是必须写成<code>*args</code> 和<code>**kwargs</code>。 只有变量前面的 <code>*</code>(星号)才是必须的. 你也可以写成<code>*var</code> 和<code>**vars</code>. 而写成<code>*args</code> 和<code>**kwargs</code>只是一个通俗的命名约定。 那就先看一下<code>*args</code>吧。</p>
+<span id="more"></span>
+
+<h2 id="1、-args-的用法"><a href="#1、-args-的用法" class="headerlink" title="1、*args 的用法"></a>1、*args 的用法</h2><p><code>*args</code> 和 <code>**kwargs</code> 主要用于函数定义。 你可以将不定数量的参数传递给一个函数。</p>
+<p>这里的不定的意思是：预先并不知道, 函数使用者会传递多少个参数给你, 所以在这个场景下使用这两个关键字。 <code>*args</code> 是用来发送一个非键值对的可变数量的参数列表给一个函数.</p>
+<p>这里有个例子帮你理解这个概念:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">test_var_args</span>(<span class="params">f_arg, *argv</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;first normal arg:&quot;</span>, f_arg)</span><br><span class="line">    <span class="keyword">for</span> arg <span class="keyword">in</span> argv:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;another arg through *argv:&quot;</span>, arg)</span><br><span class="line"></span><br><span class="line">test_var_args(<span class="string">&#x27;yasoob&#x27;</span>, <span class="string">&#x27;python&#x27;</span>, <span class="string">&#x27;eggs&#x27;</span>, <span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这会产生如下输出:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">first normal arg: yasoob</span><br><span class="line">another arg through *argv: python</span><br><span class="line">another arg through *argv: eggs</span><br><span class="line">another arg through *argv: test</span><br></pre></td></tr></table></figure>
+
+<p>我希望这解决了你所有的困惑. 那接下来让我们谈谈 <code>**kwargs</code></p>
+<h2 id="2、-kwargs-的用法"><a href="#2、-kwargs-的用法" class="headerlink" title="2、**kwargs 的用法"></a>2、**kwargs 的用法</h2><p><code>**kwargs</code> 允许你将不定长度的<strong>键值对</strong>, 作为参数传递给一个函数。 如果你想要在一个函数里处理<strong>带名字的参数</strong>, 你应该使用<code>**kwargs</code>。</p>
+<p>这里有个让你上手的例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">greet_me</span>(<span class="params">**kwargs</span>):</span><br><span class="line">    <span class="keyword">for</span> key, value <span class="keyword">in</span> kwargs.items():</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&#123;0&#125; == &#123;1&#125;&quot;</span>.<span class="built_in">format</span>(key, value))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>greet_me(name=<span class="string">&quot;yasoob&quot;</span>)</span><br><span class="line">name == yasoob</span><br></pre></td></tr></table></figure>
+
+<p>现在你可以看出我们怎样在一个函数里, 处理了一个<strong>键值对</strong>参数了。</p>
+<p>这就是<code>**kwargs</code>的基础, 而且你可以看出它有多么管用。 接下来让我们谈谈，你怎样使用<code>*args</code> 和 <code>**kwargs</code>来调用一个参数为列表或者字典的函数。</p>
+<h2 id="3、使用-args-和-kwargs-来调用函数"><a href="#3、使用-args-和-kwargs-来调用函数" class="headerlink" title="3、使用 *args 和 **kwargs 来调用函数"></a>3、使用 <code>*args</code> 和 <code>**kwargs</code> 来调用函数</h2><p>那现在我们将看到怎样使用<code>*args</code>和<code>**kwargs</code> 来调用一个函数。 假设，你有这样一个小函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">test_args_kwargs</span>(<span class="params">arg1, arg2, arg3</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;arg1:&quot;</span>, arg1)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;arg2:&quot;</span>, arg2)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;arg3:&quot;</span>, arg3)</span><br></pre></td></tr></table></figure>
+
+<p>你可以使用<code>*args</code>或<code>**kwargs</code>来给这个小函数传递参数。 下面是怎样做：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 首先使用 *args</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>args = (<span class="string">&quot;two&quot;</span>, <span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_args_kwargs(*args)</span><br><span class="line">arg1: two</span><br><span class="line">arg2: <span class="number">3</span></span><br><span class="line">arg3: <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 现在使用 **kwargs:</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>kwargs = &#123;<span class="string">&quot;arg3&quot;</span>: <span class="number">3</span>, <span class="string">&quot;arg2&quot;</span>: <span class="string">&quot;two&quot;</span>, <span class="string">&quot;arg1&quot;</span>: <span class="number">5</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>test_args_kwargs(**kwargs)</span><br><span class="line">arg1: <span class="number">5</span></span><br><span class="line">arg2: two</span><br><span class="line">arg3: <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="标准参数与-args、-kwargs在使用时的顺序"><a href="#标准参数与-args、-kwargs在使用时的顺序" class="headerlink" title="标准参数与*args、**kwargs在使用时的顺序"></a>标准参数与<code>*args、**kwargs</code>在使用时的顺序</h3><p>那么如果你想在函数里同时使用所有这三种参数， 顺序是这样的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">some_func(fargs, *args, **kwargs)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、什么时候使用它们？"><a href="#4、什么时候使用它们？" class="headerlink" title="4、什么时候使用它们？"></a>4、什么时候使用它们？</h2><p>这还真的要看你的需求而定。</p>
+<p>最常见的用例是在写函数装饰器的时候（会在另一章里讨论）。</p>
+<p>此外它也可以用来做猴子补丁(monkey patching)。猴子补丁的意思是在程序运行时(runtime)修改某些代码。 打个比方，你有一个类，里面有个叫<code>get_info</code>的函数会调用一个API并返回相应的数据。如果我们想测试它，可以把API调用替换成一些测试数据。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> someclass</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_info</span>(<span class="params">self, *args</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Test data&quot;</span></span><br><span class="line"></span><br><span class="line">someclass.get_info = get_info</span><br></pre></td></tr></table></figure>
+
+<p>我敢肯定你也可以想象到一些其他的用例。</p>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://docs.pythontab.com/interpy/args_kwargs/README/">https://docs.pythontab.com/interpy/args_kwargs/README/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/21/Python%E8%BF%9B%E9%98%B61-args%E5%92%8C-kwargs/" data-id="clvjphfl3000am0nnb49p743q" data-title="Python进阶1- *args 和 **kwargs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/08/21/Python%E8%BF%9B%E9%98%B62-Map%EF%BC%8CFilter-%E5%92%8C-Reduce/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python进阶2 - Map，Filter 和 Reduce
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/08/21/Python-NLP%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python-NLP入门教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/e-book/" rel="tag">e-book</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nlp/" rel="tag">nlp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/e-book/" style="font-size: 10px;">e-book</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/04/28/hello-world/">你好，周纯伊</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/25/Spring%E5%AD%A6%E4%B9%A0-1/">Spring学习-1</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/22/%E6%B5%B7%E4%BA%8B%E5%B0%8F%E8%AE%B0-210922/">海事小记-210922</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/29/Python%E8%BF%9B%E9%98%B65-%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%882%EF%BC%89/">Python进阶5 - 装饰器（2）</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/24/Python%E8%BF%9B%E9%98%B65-%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%881%EF%BC%89/">Python进阶5 - 装饰器（1）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
